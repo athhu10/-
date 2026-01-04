@@ -4,59 +4,288 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chakan Cha Raja | छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Yantra+Manav:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e67e22;
+            --secondary: #c0392b;
+            --dark: #121212;
+            --gold: #ffcc00;
+            --insta: #E1306C;
+        }
+
+        body {
+            font-family: 'Yantra Manav', sans-serif;
+            margin: 0;
+            background-color: #fffaf0;
+            color: #333;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- Header Section (As per your request) --- */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('527307266_18018795476753881_7200169681623509279_n.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            border-bottom: 8px solid var(--primary);
+        }
+
+        header h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 0; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); }
+        header p { margin: 5px 0; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+
+        /* --- Floating Instagram Button --- */
+        .float-insta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--insta);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .float-insta:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* --- Video Container (Clean Look) --- */
+        .section-title { font-size: 2.5rem; color: var(--secondary); text-align: center; margin-top: 60px; }
+        
+        .video-container {
+            max-width: 900px;
+            margin: 30px auto 60px;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 5px solid var(--primary);
+        }
+
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* --- Lightbox Gallery --- */
+        .gallery-section { padding: 50px 10%; text-align: center; background: white; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .photo-card {
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: 0.4s;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #fff;
+            padding: 10px;
+        }
+
+        .photo-card img { width: 100%; height: 350px; object-fit: cover; border-radius: 10px; display: block; }
+        .photo-card:hover { transform: translateY(-10px); border: 2px solid var(--primary); }
+        
+        .year-tag { position: absolute; top: 20px; right: 20px; background: var(--secondary); color: white; padding: 4px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9rem; }
+
+        /* --- Professional Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 10% 30px;
+            text-align: center;
+        }
+        .social-icons {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-icons a:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-5px); }
+        .insta-hover:hover { background: var(--insta) !important; border-color: var(--insta) !important; }
+
+        .footer-info h3 { color: var(--gold); font-size: 2rem; margin-bottom: 10px; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px; font-size: 0.8rem; opacity: 0.6; }
+
+        /* --- Lightbox Popup --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lightbox img { max-width: 90%; max-height: 80%; border: 4px solid var(--gold); border-radius: 5px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 50px; cursor: pointer; }
+
+    </style>
 </head>
-<body class="locked">
+<body>
 
-    <div id="video-overlay">
-        <h2 style="color: white; margin-bottom: 25px; font-size: 2.5rem;">|| गणपती बाप्पा मोरया ||</h2>
-        <div class="entrance-video-container">
-            <iframe src="https://www.instagram.com/reel/DN_OGtckhIQ/embed" width="320" height="480" frameborder="0" scrolling="no"></iframe>
+
+    <a href="https://www.instagram.com/chakan_cha_raja" target="_blank" class="float-insta">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    
+   <header>
+    <img src="Screenshot_2026-01-04_034241-removebg-preview.png" 
+         alt="Shree Chhatrapatinagar Ganeshotsav Mandal" 
+         class="header-logo">
+    
+    <div style="text-align: center;">
+        <p style="font-size: 2.2rem; font-weight: bold; color: var(--gold); margin: 10px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">
+            ।। चाकण चा राजा ।।
+        </p>
+        <p style="font-size: 0.8rem; letter-spacing: 1px; opacity: 0.9;">
+            स्थापना: १९९७ (२८ वर्षांची गौरवशाली परंपरा)
+        </p>
+    </div>
+</header>
+        
+
+    <h2 class="section-title">भव्य जिवंत देखावे </h2>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/0AVNHV6fKKs?modestbranding=1&rel=0&showinfo=0" allowfullscreen></iframe>
         </div>
-        <button class="enter-btn" onclick="enterSite()">प्रवेश करा</button>
     </div>
 
-    <div id="main-site">
-        <header>
-            <div class="header-top-row">
-                <img src="logo_files/521502050_18017987345753881_5896779694965537172_n.jpg" alt="Logo" class="side-logo">
-                <h1 class="main-mandal-name">श्री छत्रपतीनगर सार्वजनिक गणेशोत्सव मंडळ</h1>
+<section id="gallery">
+    <h2 class="section-title">उत्सव क्षणचित्रे</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 30px;">फोटोवर क्लिक करा आणि पूर्ण दर्शन घ्या</p>
+    
+    <div class="gallery-grid">
+        <a href="history-gallery.html" style="text-decoration: none; color: inherit;">
+            <div class="photo-card">
+                <span class="year-tag">इतिहास</span>
+                <img src="Screenshot 2026-01-03 231938.png" alt="Historical Record">
+                <p style="font-size: 1.4rem; margin-top: 10px;"><b>मंडळाचा वारसा</b></p>
             </div>
+        </a>
 
-            <div class="raja-title">।। चाकण चा राजा ।।</div>
-            <div class="establishment-text">स्थापना: १९९७ (२८ वर्षांची गौरवशाली परंपरा)</div>
-        </header>
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\460714737_1153625636113939_2908347564215830451_n.jpg" alt="History 1">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>सुवर्ण क्षण</b></p>
+        </div>
 
-        <section id="heritage-section">
-            <h2 class="section-title">अभिमानास्पद वारसा</h2>
-            
-            <div class="gallery-container">
-                <div class="gallery-cover" id="galleryCover" onclick="revealGallery()">
-                    <span class="year-tag">इतिहास</span>
-                    <img src="Screenshot 2026-01-03 231938.png" alt="Heritage Cover">
-                    <div class="cover-overlay">
-                        <i class="fas fa-images"></i>
-                        <span>सर्व फोटो पहा</span>
-                    </div>
-                    <p class="gallery-caption"><b>मंडळाचा गौरवशाली वारसा</b></p>
-                </div>
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\518736589_4004329776547203_7223377311133871794_n.jpg" alt="History 2">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>ऐतिहासिक सोहळा</b></p>
+        </div>
 
-                <div id="hidden-gallery-grid" class="gallery-grid"></div>
-            </div>
-        </section>
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\539991710_2595981390755855_3380843254067432208_n.jpg" alt="History 3">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>भक्तीचा महिमा</b></p>
+        </div>
 
-        <footer>
-            <div class="footer-info">
-                <h3>।। चाकण चा राजा ।।</h3>
-                <p>छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ, चाकण</p>
-                <p style="color: var(--gold); font-weight: bold; font-size: 1.4rem;">www.chakancharaja.in</p>
-            </div>
-            <div class="copyright">&copy; २०२६ | सर्व हक्क राखीव.</div>
-        </footer>
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\540195930_25001733762758256_1970329605564028651_n.jpg" alt="History 4">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>उत्सव परंपरा</b></p>
+        </div>
+    </div>
+</section>
+
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\539991710_2595981390755855_3380843254067432208_n.jpg" alt="History 3">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>भक्तीचा महिमा</b></p>
+        </div>
+
+        <div class="photo-card">
+            <span class="year-tag">इतिहास</span>
+            <img src="logo_files\540195930_25001733762758256_1970329605564028651_n.jpg" alt="History 4">
+            <p style="font-size: 1.4rem; margin-top: 10px;"><b>उत्सव परंपरा</b></p>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="footer-info">
+            <h3>।। चाकण चा राजा ।।</h3>
+            <p>छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ<br>
+            चाकण, पुणे - ४१०५०१</p>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/chakan_cha_raja" target="_blank" class="insta-hover">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@chakancharaja" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://wa.me/9198XXXXXXXX" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <div class="copyright">
+            &copy; २०२६ छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ. सर्व हक्क राखीव. <br>
+            Made with <i class="fas fa-heart" style="color: var(--secondary);"></i> for Bappa.
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="">
+        <p style="color: white; margin-top: 20px; font-size: 1.2rem;">।। मंगलमूर्ती मोरया ।।</p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop scrolling when open
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling again
+        }
+
+        // Close when clicking background
+        window.onclick = function(event) {
+            let lightbox = document.getElementById('lightbox');
+            if (event.target == lightbox) { closeLightbox(); }
+        }
+    </script>
+
 </body>
 </html>
