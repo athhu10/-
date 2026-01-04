@@ -1,0 +1,172 @@
+/* --- Global & Variables --- */
+:root {
+    --primary: #e67e22;
+    --secondary: #c0392b;
+    --dark: #121212;
+    --gold: #ffcc00;
+    --insta: #E1306C;
+}
+
+body {
+    font-family: 'Yantra Manav', sans-serif;
+    margin: 0;
+    background-color: #fffaf0;
+    color: #333;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden; /* Locks scroll on entrance page */
+}
+
+/* --- Entrance Overlay --- */
+#video-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, #2c3e50, #000000);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.enter-btn {
+    background: linear-gradient(45deg, var(--primary), #d35400);
+    color: white;
+    padding: 20px 60px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.4);
+    transition: 0.3s;
+}
+
+.enter-btn:hover { transform: scale(1.1); }
+
+/* --- Header Section (Increased Text Sizes) --- */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('527307266_18018795476753881_7200169681623509279_n.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    border-bottom: 10px solid var(--primary);
+}
+
+.header-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.side-logo {
+    width: 140px; height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+}
+
+.main-mandal-name {
+    font-size: 3rem; /* Increased size */
+    font-weight: bold;
+    text-shadow: 3px 3px 15px rgba(0,0,0,0.9);
+    margin: 0;
+}
+
+.raja-title {
+    font-size: 4.8rem; /* Large impact */
+    color: var(--gold);
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 0 0 30px rgba(0,0,0,1);
+    opacity: 0; /* Animated reveal */
+    transform: translateY(20px);
+}
+
+.reveal-text { animation: textFadeIn 1.5s forwards ease-out; }
+@keyframes textFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+.establishment-text {
+    font-size: 2rem; /* Large establishing text */
+    opacity: 0.9;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+/* --- Gallery Grid & Cover Reveal --- */
+.gallery-container { max-width: 1100px; margin: 0 auto; }
+
+.gallery-cover {
+    position: relative;
+    cursor: pointer;
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transition: 0.4s;
+}
+
+.gallery-cover img {
+    width: 100%; height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(230, 126, 34, 0.95);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.gallery-cover:hover .cover-overlay { opacity: 1; }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    animation: gridReveal 0.8s forwards ease-out;
+}
+
+@keyframes gridReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.photo-card {
+    background: white; padding: 12px; border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.photo-card img { width: 100%; height: 320px; object-fit: cover; border-radius: 10px; }
+.photo-card p { font-size: 1.5rem; font-weight: bold; margin-top: 15px; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main-mandal-name { font-size: 2rem; }
+    .raja-title { font-size: 3rem; }
+    .establishment-text { font-size: 1.4rem; }
+    .gallery-cover img { height: 300px; }
+}
