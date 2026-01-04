@@ -1,53 +1,26 @@
-/**
- * Function: enterSite
- * Purpose: Slides the entrance overlay up, unlocks scrolling,
- * and triggers the header text animation.
- */
 function enterSite() {
-    // 1. Slide up the entrance page
-    const overlay = document.getElementById('video-overlay');
-    overlay.style.transform = 'translateY(-100%)';
+    // Slide up the entrance overlay
+    document.getElementById('video-overlay').style.transform = 'translateY(-100%)';
     
-    // 2. Reveal the main site content
-    const mainSite = document.getElementById('main-site');
-    mainSite.style.opacity = '1';
-
-    // 3. Trigger the grand text reveal animation in the header
-    const title = document.querySelector('.raja-title');
-    if(title) {
-        title.classList.add('reveal-text');
-    }
-
-    // 4. Enable website scrolling
-    document.body.classList.remove('locked');
-
-    // 5. Cleanup the overlay from the DOM after animation completes
+    // Animate the big header text
     setTimeout(() => {
-        overlay.style.display = 'none';
-    }, 800);
+        document.querySelector('.raja-title').classList.add('reveal-text');
+    }, 400);
+
+    // Unlock scrolling
+    document.body.classList.remove('locked');
 }
 
-/**
- * Function: revealGallery
- * Purpose: Hides the single cover image and displays all
- * historical photos in a grid layout.
- */
 function revealGallery() {
-    const cover = document.querySelector('.gallery-cover');
+    const cover = document.getElementById('galleryCover');
     const grid = document.getElementById('hidden-gallery-grid');
+
+    // Fade out the cover
+    cover.style.opacity = '0';
     
-    if (cover && grid) {
-        // Fade out the cover photo
-        cover.style.transition = '0.4s';
-        cover.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Remove cover and show the full grid
-            cover.style.display = 'none';
-            grid.style.display = 'grid'; 
-            
-            // Scroll smoothly to the revealed photos
-            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 400);
-    }
+    setTimeout(() => {
+        cover.style.display = 'none'; // Hide the cover completely
+        grid.style.display = 'grid';  // Reveal the hidden images within the section
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
 }
