@@ -4,167 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chakan Cha Raja | छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Yantra+Manav:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #e67e22;
-            --secondary: #c0392b;
-            --dark: #1a1a1a;
-        }
-
-        body {
-            font-family: 'Yantra Manav', sans-serif;
-            margin: 0;
-            background-color: #fffaf0;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* --- Entry Video Overlay --- */
-        #video-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: black;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .enter-btn {
-            background: var(--primary);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 0 20px rgba(230, 126, 34, 0.5);
-            transition: 0.3s;
-        }
-        .enter-btn:hover { transform: scale(1.1); background: #d35400; }
-
-        /* --- Hero Section --- */
-        header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('D:/ccrwebsite/548663375_122094654735040627_985860790199338390_n.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        header h1 { font-size: clamp(2rem, 8vw, 4rem); margin: 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); }
-
-        /* --- Sections --- */
-        section { padding: 60px 10%; text-align: center; }
-        h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 30px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 10px; }
-
-        /* --- Screenshot Feature --- */
-        .feature-img-container {
-            margin: 40px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .screenshot-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        /* --- Media Grid --- */
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .gallery-img:hover { transform: translateY(-10px); }
-
-        footer { background: var(--dark); color: white; padding: 30px; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yantra+Manav:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="locked">
 
     <div id="video-overlay">
-        <h2 style="color: white; margin-bottom: 20px;">|| गणपती बाप्पा मोरया ||</h2>
-        <div style="border: 4px solid var(--primary); border-radius: 20px; overflow: hidden;">
-            <iframe src="https://www.instagram.com/reel/DN_OGtckhIQ/embed" width="320" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+        <h2 style="color: white; margin-bottom: 25px; font-size: 2.5rem;">|| गणपती बाप्पा मोरया ||</h2>
+        <div class="entrance-video-container">
+            <iframe src="https://www.instagram.com/reel/DN_OGtckhIQ/embed" width="320" height="480" frameborder="0" scrolling="no"></iframe>
         </div>
-        <button class="enter-btn" onclick="enterSite()">दर्शन घेण्यासाठी प्रवेश करा</button>
+        <button class="enter-btn" onclick="enterSite()">प्रवेश करा</button>
     </div>
 
+    <div id="main-site">
     <header>
         <h1>छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ</h1>
         <p style="font-size: 1.8rem; font-weight: bold; color: #ffcc00; margin-top: 10px;">।। चाकण चा राजा ।।</p>
         <p>स्थापना: १९९७ (२८ वर्षांची गौरवशाली परंपरा)</p>
     </header>
 
-    <section>
-        <h2>अभिमानास्पद वारसा</h2>
-        <p>मंडळाच्या प्रवासातील काही खास आठवणी आणि महत्त्वाचे क्षण.</p>
-        <div class="feature-img-container">
-            <img src="D:/ccrwebsite/Screenshot 2026-01-03 231938.png" class="screenshot-img" alt="Mandal Record Screenshot">
-        </div>
-    </section>
-
-    <section style="background-color: #fdf2e9;">
-        <h2>भव्य आगमन सोहळा</h2>
-        <div style="max-width: 850px; margin: 0 auto; border: 10px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <iframe width="100%" height="480" src="https://www.youtube.com/embed/0AVNHV6fKKs?si=RQolYPD88wZhBJm2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section>
-        <h2>उत्सव क्षणचित्रे (Gallery)</h2>
-        <div class="media-grid">
-            <img src="D:/ccrwebsite/527307266_18018795476753881_7200169681623509279_n.jpg" class="gallery-img" alt="Chakan Cha Raja Main Idol">
+        <section id="heritage-section">
+            <h2 class="section-title">अभिमानास्पद वारसा</h2>
             
-            <div style="background: white; padding: 10px; border-radius: 12px;">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DOaN6HWgZjI/" data-instgrm-version="14"></blockquote>
+            <div class="gallery-container">
+                <div class="gallery-cover" id="galleryCover" onclick="revealGallery()">
+                    <span class="year-tag">इतिहास</span>
+                    <img src="Screenshot 2026-01-03 231938.png" alt="Mandal Heritage Cover">
+                    <div class="cover-overlay">
+                        <i class="fas fa-images"></i>
+                        <span>सर्व इतिहास पहा</span>
+                    </div>
+                    <p class="gallery-caption"><b>मंडळाचा गौरवशाली वारसा</b></p>
+                </div>
+
+                <div id="hidden-gallery-grid" class="gallery-grid">
+                    <div class="photo-card">
+                        <img src="D:\ccrwebsite\logo_files\460714737_1153625636113939_2908347564215830451_n.jpg" alt="History 1">
+                        <p>सुवर्ण क्षण</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="D:\ccrwebsite\logo_files\518736589_4004329776547203_7223377311133871794_n.jpg" alt="History 2">
+                        <p>ऐतिहासिक सोहळा</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="D:\ccrwebsite\logo_files\539991710_2595981390755855_3380843254067432208_n.jpg" alt="History 3">
+                        <p>भक्तीचा महिमा</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="D:\ccrwebsite\logo_files\540195930_25001733762758256_1970329605564028651_n.jpg" alt="History 4">
+                        <p>उत्सव परंपरा</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div style="background: white; padding: 10px; border-radius: 12px;">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DOSNMkbARJ0/" data-instgrm-version="14"></blockquote>
+        <section class="video-section">
+            <h2 class="section-title">भव्य आगमन सोहळा</h2>
+            <div class="video-box">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/0AVNHV6fKKs" frameborder="0" allowfullscreen></iframe>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <p>&copy; २०२६ छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ (चाकण चा राजा)</p>
-        <p>चाकण, पुणे - ४१०५०१</p>
-    </footer>
+        <footer>
+            <div class="footer-info">
+                <h3>।। चाकण चा राजा ।।</h3>
+                <p>छत्रपती नगर सार्वजनिक गणेशोत्सव मंडळ, चाकण</p>
+                <p style="color: var(--gold); font-weight: bold;">www.chakancharaja.in</p>
+            </div>
+            <div class="copyright">&copy; २०२६ | सर्व हक्क राखीव.</div>
+        </footer>
+    </div>
 
-    <script async src="//www.instagram.com/embed.js"></script>
-
-    <script>
-        function enterSite() {
-            document.getElementById('video-overlay').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('video-overlay').style.display = 'none';
-            }, 500);
-            window.scrollTo(0, 0);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
