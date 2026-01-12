@@ -3,114 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chakan Cha Raja | Official Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chakan Cha Raja | Timeline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Yantra+Manav:wght@400;700;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --gold: #ffd700; --dark: #0a0a0a; }
+        body { background: var(--dark); color: white; font-family: 'Yantra Manav', sans-serif; margin: 0; }
+
+        /* Header */
+        .hero { text-align: center; padding: 60px 20px; border-bottom: 2px solid var(--gold); background: #111; }
+        .hero h1 { color: var(--gold); margin: 0; font-size: 2.5rem; }
+
+        /* Timeline Container */
+        .timeline { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+
+        /* Individual Year Section */
+        .year-card { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,215,0,0.2);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* The Button/Header that opens the gallery */
+        .year-trigger {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgba(255,215,0,0.05);
+        }
+        .year-trigger:hover { background: rgba(255,215,0,0.15); }
+        .year-number { font-size: 2rem; font-weight: 900; color: var(--gold); }
+        .view-btn { background: var(--gold); color: black; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
+
+        /* The Hidden Gallery Grid */
+        .gallery-content {
+            display: none; /* HIDDEN BY DEFAULT */
+            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            border-top: 1px solid rgba(255,215,0,0.2);
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo-item {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .photo-item img { width: 100%; height: 150px; object-fit: cover; display: block; }
+        .photo-item p { padding: 10px; font-size: 0.9rem; text-align: center; margin: 0; }
+
+        .empty-msg { grid-column: 1/-1; text-align: center; color: #666; padding: 20px; font-style: italic; }
+
+        /* Footer */
+        footer { text-align: center; padding: 40px; border-top: 2px solid var(--gold); margin-top: 50px; }
+        .social-links a { color: white; font-size: 1.8rem; margin: 0 15px; text-decoration: none; }
+    </style>
 </head>
-<body class="locked">
+<body>
 
-    <div id="video-overlay">
-        <div class="loader-content">
-            <h2 class="shlok">।। वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।।</h2>
-            <div class="video-frame">
-                <iframe src="https://www.instagram.com/reel/DN_OGtckhIQ/embed" width="320" height="480" frameborder="0"></iframe>
-            </div>
-            <button class="enter-btn-gold" onclick="enterSite()">Enter Website </button>
+    <header class="hero">
+        <h1>चाकणचा राजा: ऐतिहासिक प्रवास</h1>
+        <p>१९९७ - २०२६ गौरवशाली परंपरा</p>
+    </header>
+
+    <div class="timeline" id="timeline-container">
         </div>
-    </div>
 
-    <div id="main-site">
-        <header class="hero-header">
-            <nav class="glass-nav">
-                <div class="nav-logo">
-                    <img src="5896779694965537172_n.jpg" alt="Logo">
-                    <span>चाकणचा राजा</span>
+    <footer>
+        <p style="color:var(--gold); font-weight:900;">आमच्याशी जोडून राहा</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/chakan_cha_raja/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@chatrapatinagar_official" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="margin-top:20px; opacity:0.6;">&copy; २०२६ चाकणचा राजा</p>
+    </footer>
+
+    <script>
+        // Data structure to hold your photo paths later
+        const photoData = {
+            "2025": [
+                { src: "img2025_1.jpg", caption: "मुख्य आरती" },
+                { src: "img2025_2.jpg", caption: "देखावा" }
+            ],
+            "2024": [
+                { src: "img2024_1.jpg", caption: "मिरवणूक" }
+            ]
+            // Add other years as you get photos
+        };
+
+        const container = document.getElementById('timeline-container');
+
+        // Generate years 2026 down to 1998
+        for (let year = 2026; year >= 1998; year--) {
+            const yearCard = document.createElement('div');
+            yearCard.className = 'year-card';
+
+            // Create individual photo HTML
+            let photoHTML = '';
+            const yearPhotos = photoData[year.toString()];
+
+            if (yearPhotos && yearPhotos.length > 0) {
+                yearPhotos.forEach(p => {
+                    photoHTML += `
+                        <div class="photo-item">
+                            <img src="${p.src}" alt="${p.caption}">
+                            <p>${p.caption}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                photoHTML = `<div class="empty-msg">या वर्षाचे फोटो लवकरच अपडेट केले जातील...</div>`;
+            }
+
+            yearCard.innerHTML = `
+                <div class="year-trigger" onclick="toggleGallery(this)">
+                    <span class="year-number">${year}</span>
+                    <span class="view-btn">आठवणी पहा <i class="fas fa-chevron-down"></i></span>
                 </div>
-            </nav>
-
-            <div class="hero-content">
-                <h3 class="mandal-name-glow">श्री छत्रपतीनगर सार्वजनिक गणेशोत्सव मंडळ</h3>
-                <div class="divider-gold"></div>
-                <h2 class="raja-title-xl">।। चाकण चा राजा ।।</h2>
-                <p class="est-year">स्थापना: १९९७ |</p>
-                <p    २८ वर्षांची गौरवशाली परंपरा</p>
-            </div>
-            <div class="scroll-indicator"><span></span></div>
-        </header>
-
-       <section id="heritage-section">
-    <h2 class="section-heading">अभिमानास्पद ऐतिहासिक वारसा</h2>
-
-    <div class="timeline-wrapper">
-        <div class="year-section">
-            <div class="year-header">
-                <span class="year-badge">२०२५</span>
-                <h3 class="program-title">या वर्षातील कार्यक्रम व आठवणी</h3>
-            </div>
-            <div class="photo-grid">
-                <div class="photo-box"><img src="" alt="Event 1"><p>कार्यक्रम १</p></div>
-                <div class="photo-box"><img src="" alt="Event 2"><p>कार्यक्रम २</p></div>
-                <div class="photo-box"><img src="" alt="Event 3"><p>कार्यक्रम ३</p></div>
-                <div class="photo-box-blank">फोटो उपलब्ध नाही</div> 
-            </div>
-        </div>
-        <div class="year-section">
-            <div class="year-header">
-                <span class="year-badge">२०२४</span>
-                <h3 class="program-title">या वर्षातील कार्यक्रम व आठवणी</h3>
-            </div>
-            <div class="photo-grid">
-                <div class="photo-box"><img src="" alt=""><p>मिरवणूक</p></div>
-                <div class="photo-box"><img src="" alt=""><p>महाप्रसाद</p></div>
-                <div class="photo-box-blank">फोटो उपलब्ध नाही</div>
-            </div>
-        </div>
-        <div id="older-years-container">
-            <div class="year-section">
-                <div class="year-header"><span class="year-badge">२०२३</span></div>
-                <div class="photo-grid">
-                    <div class="photo-box-blank">फोटो लवकरच येत आहेत...</div>
+                <div class="gallery-content">
+                    ${photoHTML}
                 </div>
-            </div>
+            `;
+            container.appendChild(yearCard);
+        }
+
+        // Function to show/hide the gallery
+        function toggleGallery(element) {
+            const content = element.nextElementSibling;
+            const isVisible = content.style.display === "grid";
             
-            </div>
-    </div>
-</section>
-
-       <footer class="royal-footer">
-    <div class="footer-grid">
-        <div class="footer-box">
-            <h3>"आमच्याशी जोडून राहा"</h3>
-            <p>छत्रपती नगर, चाकण, पुणे</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/chakan_cha_raja/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                
-                <a href="#" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                
-                <a href="https://youtube.com/@chatrapatinagar_official?si=LaEX9ZMFQB9Bd7-D" target="_blank" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; २०२६ | www.chakancharaja.in | श्री गणेशाय नमः</p>
-    </div>
-</footer>
-    </div>
-
-    <script src="script.js"></script>
+            // Close all other galleries first (Optional: remove this if you want multiple open)
+            document.querySelectorAll('.gallery-content').forEach(el => el.style.display = 'none');
+            
+            // Toggle current
+            content.style.display = isVisible ? "none" : "grid";
+            
+            // Rotate icon logic could be added here
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
